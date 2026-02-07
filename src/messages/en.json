@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Lightstories - Photography by Thorsten Kolb",
+    "description": "Professional wedding, portrait and family photography. Emotional moments captured in timeless images."
+  },
+  "nav": {
+    "home": "Home",
+    "wedding": "Wedding",
+    "portrait": "Portrait",
+    "family": "Family",
+    "projects": "Projects",
+    "contact": "Contact",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Moments that last",
+    "subtitle": "Wedding, Portrait & Family Photography",
+    "cta": "Discover Projects"
+  },
+  "home": {
+    "categoriesTitle": "My Focus",
+    "wedding": {
+      "title": "Wedding Photography",
+      "description": "Your special day captured in authentic, emotional images."
+    },
+    "portrait": {
+      "title": "Portrait Photography",
+      "description": "Personality and character captured in expressive portraits."
+    },
+    "family": {
+      "title": "Family Photography",
+      "description": "Precious family moments preserved for eternity."
+    },
+    "aboutTitle": "About Me",
+    "aboutText": "I'm Thorsten Kolb, a passionate photographer. My goal is to capture your special moments in timeless images. Every story is unique - and that's exactly what I want to show in my photos.",
+    "ctaTitle": "Let's tell your story together",
+    "ctaButton": "Get in Touch"
+  },
+  "category": {
+    "viewProjects": "View Projects",
+    "bookNow": "Book Now"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Insights into my work",
+    "viewProject": "View Project",
+    "allCategories": "All",
+    "noProjects": "No projects in this category yet."
+  },
+  "project": {
+    "date": "Date",
+    "location": "Location",
+    "category": "Category",
+    "testimonial": "Client Testimonial",
+    "backToProjects": "Back to Projects",
+    "nextProject": "Next Project"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's talk about your project",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+49 123 456789",
+      "category": "Category",
+      "categoryPlaceholder": "Choose a category",
+      "date": "Preferred date (optional)",
+      "datePlaceholder": "DD.MM.YYYY",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "privacy": "I have read the privacy policy and agree to the processing of my data.",
+      "submit": "Send Inquiry",
+      "sending": "Sending...",
+      "success": "Thank you for your inquiry! I'll get back to you as soon as possible.",
+      "error": "Something went wrong. Please try again or send me an email directly."
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy"
+  },
+  "categories": {
+    "hochzeit": "Wedding",
+    "portrait": "Portrait",
+    "familie": "Family"
+  }
+}

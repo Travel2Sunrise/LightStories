@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Lightstories - Fotografie von Thorsten Kolb",
+    "description": "Professionelle Hochzeits-, Portrait- und Familienfotografie. Emotionale Momente festgehalten in zeitlosen Bildern."
+  },
+  "nav": {
+    "home": "Home",
+    "wedding": "Hochzeit",
+    "portrait": "Portrait",
+    "family": "Familie",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "about": "Über mich"
+  },
+  "hero": {
+    "title": "Momente, die bleiben",
+    "subtitle": "Hochzeits-, Portrait- und Familienfotografie",
+    "cta": "Projekte entdecken"
+  },
+  "home": {
+    "categoriesTitle": "Meine Schwerpunkte",
+    "wedding": {
+      "title": "Hochzeitsfotografie",
+      "description": "Euer besonderer Tag in authentischen, emotionalen Bildern festgehalten."
+    },
+    "portrait": {
+      "title": "Portraitfotografie",
+      "description": "Persönlichkeit und Charakter in ausdrucksstarken Portraits eingefangen."
+    },
+    "family": {
+      "title": "Familienfotografie",
+      "description": "Kostbare Familienmomente für die Ewigkeit bewahrt."
+    },
+    "aboutTitle": "Über mich",
+    "aboutText": "Ich bin Thorsten Kolb, leidenschaftlicher Fotograf aus Leidenschaft. Mein Ziel ist es, eure besonderen Momente in zeitlosen Bildern festzuhalten. Jede Geschichte ist einzigartig - und genau das möchte ich in meinen Fotos zeigen.",
+    "ctaTitle": "Lass uns gemeinsam eure Geschichte erzählen",
+    "ctaButton": "Jetzt Anfragen"
+  },
+  "category": {
+    "viewProjects": "Projekte ansehen",
+    "bookNow": "Jetzt anfragen"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "Einblicke in meine Arbeit",
+    "viewProject": "Projekt ansehen",
+    "allCategories": "Alle",
+    "noProjects": "Noch keine Projekte in dieser Kategorie."
+  },
+  "project": {
+    "date": "Datum",
+    "location": "Ort",
+    "category": "Kategorie",
+    "testimonial": "Das sagt der Kunde",
+    "backToProjects": "Zurück zu Projekten",
+    "nextProject": "Nächstes Projekt"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Lass uns über dein Projekt sprechen",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Dein Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "deine@email.de",
+      "phone": "Telefon (optional)",
+      "phonePlaceholder": "+49 123 456789",
+      "category": "Kategorie",
+      "categoryPlaceholder": "Wähle eine Kategorie",
+      "date": "Wunschtermin (optional)",
+      "datePlaceholder": "TT.MM.JJJJ",
+      "message": "Nachricht",
+      "messagePlaceholder": "Erzähl mir von deinem Projekt...",
+      "privacy": "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu.",
+      "submit": "Anfrage senden",
+      "sending": "Wird gesendet...",
+      "success": "Vielen Dank für deine Anfrage! Ich melde mich so schnell wie möglich bei dir.",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe mir direkt eine E-Mail."
+    },
+    "info": {
+      "title": "Kontaktdaten",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "location": "Standort"
+    }
+  },
+  "footer": {
+    "copyright": "Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
+  "categories": {
+    "hochzeit": "Hochzeit",
+    "portrait": "Portrait",
+    "familie": "Familie"
+  }
+}
