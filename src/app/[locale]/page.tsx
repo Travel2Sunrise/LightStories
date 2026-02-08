@@ -30,19 +30,19 @@ function HomePageInner() {
     {
       title: t("wedding.title"),
       description: t("wedding.description"),
-      imageSrc: "/images/hochzeit/hero.jpg",
+      imageSrc: "/images/hochzeit/hero.png",
       href: "/hochzeit",
     },
     {
       title: t("portrait.title"),
       description: t("portrait.description"),
-      imageSrc: "/images/portrait/hero.jpg",
+      imageSrc: "/images/portrait/hero.png",
       href: "/portrait",
     },
     {
       title: t("family.title"),
       description: t("family.description"),
-      imageSrc: "/images/familie/hero.jpg",
+      imageSrc: "/images/familie/hero.png",
       href: "/familie",
     },
   ];

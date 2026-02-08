@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { Gallery } from "@/components/Gallery";
 import { Link } from "@/i18n/routing";
 import { getProjectsByCategory } from "@/lib/mdx";
+import { getCategoryImages } from "@/lib/images";
 
 export async function generateMetadata({
   params,
@@ -32,35 +33,39 @@ export default async function FamiliePage({
     p.frontmatter.gallery.slice(0, 2).map((src) => ({ src }))
   );
 
-  return <FamiliePageInner galleryImages={galleryImages} />;
+  // Get all numbered image files from the familie directory
+  const categoryImages = getCategoryImages("familie");
+
+  return (
+    <FamiliePageInner
+      galleryImages={galleryImages}
+      categoryImages={categoryImages}
+    />
+  );
 }
 
 function FamiliePageInner({
   galleryImages,
+  categoryImages,
 }: {
   galleryImages: { src: string }[];
+  categoryImages: string[];
 }) {
   const t = useTranslations("home.family");
   const tCategory = useTranslations("category");
 
+  // Use category images if available, otherwise fall back to project gallery images
   const images =
-    galleryImages.length > 0
-      ? galleryImages
-      : [
-          { src: "/images/familie/1.jpg" },
-          { src: "/images/familie/2.jpg" },
-          { src: "/images/familie/3.jpg" },
-          { src: "/images/familie/4.jpg" },
-          { src: "/images/familie/5.jpg" },
-          { src: "/images/familie/6.jpg" },
-        ];
+    categoryImages.length > 0
+      ? categoryImages.map((src) => ({ src }))
+      : galleryImages;
 
   return (
     <>
       <Hero
         title={t("title")}
         subtitle={t("description")}
-        imageSrc="/images/familie/hero.jpg"
+        imageSrc="/images/familie/hero-bg.png"
         showCta={false}
         height="large"
       />

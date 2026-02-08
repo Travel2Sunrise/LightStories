@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { Gallery } from "@/components/Gallery";
 import { Link } from "@/i18n/routing";
 import { getProjectsByCategory } from "@/lib/mdx";
+import { getCategoryImages } from "@/lib/images";
 
 export async function generateMetadata({
   params,
@@ -32,36 +33,39 @@ export default async function HochzeitPage({
     p.frontmatter.gallery.slice(0, 2).map((src) => ({ src }))
   );
 
-  return <HochzeitPageInner galleryImages={galleryImages} />;
+  // Get all numbered image files from the hochzeit directory
+  const categoryImages = getCategoryImages("hochzeit");
+
+  return (
+    <HochzeitPageInner
+      galleryImages={galleryImages}
+      categoryImages={categoryImages}
+    />
+  );
 }
 
 function HochzeitPageInner({
   galleryImages,
+  categoryImages,
 }: {
   galleryImages: { src: string }[];
+  categoryImages: string[];
 }) {
   const t = useTranslations("home.wedding");
   const tCategory = useTranslations("category");
 
-  // Fallback gallery images if no projects exist yet
+  // Use category images if available, otherwise fall back to project gallery images
   const images =
-    galleryImages.length > 0
-      ? galleryImages
-      : [
-          { src: "/images/hochzeit/1.jpg" },
-          { src: "/images/hochzeit/2.jpg" },
-          { src: "/images/hochzeit/3.jpg" },
-          { src: "/images/hochzeit/4.jpg" },
-          { src: "/images/hochzeit/5.jpg" },
-          { src: "/images/hochzeit/6.jpg" },
-        ];
+    categoryImages.length > 0
+      ? categoryImages.map((src) => ({ src }))
+      : galleryImages;
 
   return (
     <>
       <Hero
         title={t("title")}
         subtitle={t("description")}
-        imageSrc="/images/hochzeit/hero.jpg"
+        imageSrc="/images/hochzeit/hero-bg.png"
         showCta={false}
         height="large"
       />

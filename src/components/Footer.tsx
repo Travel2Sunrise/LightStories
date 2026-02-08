@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 
 export function Footer() {
   const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,14 +18,14 @@ export function Footer() {
               LIGHTSTORIES
             </h3>
             <p className="text-sm text-white/60">
-              Hochzeits-, Portrait- und Familienfotografie
+              {t("tagline")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wider">
-              Links
+              {t("linksTitle")}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -32,7 +33,7 @@ export function Footer() {
                   href="/hochzeit"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Hochzeit
+                  {tNav("wedding")}
                 </Link>
               </li>
               <li>
@@ -40,7 +41,7 @@ export function Footer() {
                   href="/portrait"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Portrait
+                  {tNav("portrait")}
                 </Link>
               </li>
               <li>
@@ -48,7 +49,7 @@ export function Footer() {
                   href="/familie"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Familie
+                  {tNav("family")}
                 </Link>
               </li>
               <li>
@@ -56,7 +57,7 @@ export function Footer() {
                   href="/projekte"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Projekte
+                  {tNav("projects")}
                 </Link>
               </li>
             </ul>
@@ -65,7 +66,7 @@ export function Footer() {
           {/* Legal */}
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wider">
-              Rechtliches
+              {t("legalTitle")}
             </h4>
             <ul className="space-y-2">
               <li>

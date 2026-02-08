@@ -9,6 +9,7 @@ import { Link } from "@/i18n/routing";
 interface HeroProps {
   title?: string;
   subtitle?: string;
+  videoSrc?: string;
   imageSrc?: string;
   showCta?: boolean;
   ctaText?: string;
@@ -20,7 +21,8 @@ interface HeroProps {
 export function Hero({
   title,
   subtitle,
-  imageSrc = "/images/hero/main.jpg",
+  videoSrc,
+  imageSrc,
   showCta = true,
   ctaText,
   ctaHref = "/projekte",
@@ -44,21 +46,37 @@ export function Hero({
     medium: "min-h-[60vh]",
   };
 
+  // Default to video for homepage if neither is specified
+  const useVideo = videoSrc || (!imageSrc && !videoSrc);
+  const finalVideoSrc = videoSrc || "/images/hero-bg.mp4";
+
   return (
     <section
       ref={containerRef}
       className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}
     >
-      {/* Parallax Background Image */}
+      {/* Parallax Background Video or Image */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[130%] -top-[15%]">
-        <Image
-          src={imageSrc}
-          alt="Hero background"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
+        {useVideo ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={finalVideoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={imageSrc!}
+            alt="Hero background"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        )}
         {overlay && (
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
         )}
