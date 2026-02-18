@@ -101,5 +101,10 @@
     "hochzeit": "Wedding",
     "portrait": "Portrait",
     "familie": "Family"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

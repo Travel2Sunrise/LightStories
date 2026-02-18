@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #fafafa;
@@ -10,6 +11,17 @@
   --accent: #c9a87c;
   --muted: #f5f5f5;
   --muted-foreground: #737373;
+}
+
+.dark {
+  --background: #0f0f0f;
+  --foreground: #e5e5e5;
+  --primary: #c9a87c;
+  --primary-dark: #d4b88a;
+  --secondary: #3d3428;
+  --accent: #c9a87c;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
 }
 
 @theme inline {
@@ -86,6 +98,23 @@ body {
   --tw-prose-body: var(--foreground);
   --tw-prose-headings: var(--foreground);
   --tw-prose-links: var(--primary);
+}
+
+.dark .prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-hr: var(--secondary);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--secondary);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-th-borders: var(--secondary);
+  --tw-prose-td-borders: var(--secondary);
 }
 
 .prose a {

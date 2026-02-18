@@ -104,7 +104,7 @@ export default async function HomePage({
 
       {/* CTA Section */}
       {frontmatter.cta && (
-        <section className="py-20 lg:py-32 px-4 bg-primary text-white">
+        <section className="py-20 lg:py-32 px-4 bg-primary dark:bg-[#1f1e1c] text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-light mb-8 tracking-wide">
               {frontmatter.cta.title}

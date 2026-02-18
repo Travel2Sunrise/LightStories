@@ -101,5 +101,10 @@
     "hochzeit": "Hochzeit",
     "portrait": "Portrait",
     "familie": "Familie"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
   }
 }

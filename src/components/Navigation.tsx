@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navigation() {
@@ -28,7 +29,7 @@ export function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-secondary/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-secondary/20">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -53,6 +54,7 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
 
@@ -108,7 +110,8 @@ export function Navigation() {
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-secondary/20">
+                <div className="pt-4 border-t border-secondary/20 flex items-center gap-4">
+                  <ThemeToggle />
                   <LanguageSwitcher />
                 </div>
               </div>

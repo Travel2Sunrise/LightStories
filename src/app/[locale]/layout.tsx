@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -65,15 +66,17 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} data-scroll-behavior="smooth" className="relative">
+    <html lang={locale} data-scroll-behavior="smooth" className="relative" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Navigation />
-          <main className="flex-1">{children}</main>
-          <Footer socialLinks={getPage(locale, "kontakt")?.frontmatter.contactInfo?.social} />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            <Navigation />
+            <main className="flex-1">{children}</main>
+            <Footer socialLinks={getPage(locale, "kontakt")?.frontmatter.contactInfo?.social} />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
