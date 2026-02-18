@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { getProject, getProjectSlugs, getProjects } from "@/lib/mdx";
 import { Gallery } from "@/components/Gallery";
+import { PlaceholderBadge } from "@/components/PlaceholderBadge";
 import { Link } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 
@@ -85,6 +86,7 @@ function ProjectPageInner({
     <>
       {/* Hero Image */}
       <section className="relative h-[70vh] min-h-[500px]">
+        <PlaceholderBadge src={frontmatter.heroImage} />
         <Image
           src={frontmatter.heroImage}
           alt={frontmatter.title}
@@ -147,7 +149,7 @@ function ProjectPageInner({
       {/* Description */}
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-4">
-          {frontmatter.excerpt.split("\n\n").map((paragraph, i) => (
+          {frontmatter.excerpt.split("\n").map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
           ))}
         </div>

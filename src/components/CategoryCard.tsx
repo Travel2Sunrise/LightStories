@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { PlaceholderBadge } from "./PlaceholderBadge";
 
 interface CategoryCardProps {
   title: string;
@@ -28,6 +29,7 @@ export function CategoryCard({
     >
       <Link href={href} className="group block">
         <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+          <PlaceholderBadge src={imageSrc} />
           <Image
             src={imageSrc}
             alt={title}

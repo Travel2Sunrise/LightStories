@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { PlaceholderBadge } from "./PlaceholderBadge";
 
 interface GalleryProps {
   images: {
@@ -48,6 +49,7 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
             className="relative aspect-[4/5] overflow-hidden bg-muted cursor-pointer group"
             onClick={() => setSelectedImage(index)}
           >
+            <PlaceholderBadge src={image.src} />
             <Image
               src={image.src}
               alt={image.alt || `Gallery image ${index + 1}`}
@@ -153,6 +155,7 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
               className="relative max-w-[90vw] max-h-[90vh] w-full h-full"
               onClick={(e) => e.stopPropagation()}
             >
+              <PlaceholderBadge src={images[selectedImage].src} />
               <Image
                 src={images[selectedImage].src}
                 alt={images[selectedImage].alt || `Gallery image ${selectedImage + 1}`}

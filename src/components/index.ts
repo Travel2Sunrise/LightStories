@@ -7,3 +7,4 @@ export { ContactForm } from "./ContactForm";
 export { ContactInfoSidebar } from "./ContactInfoSidebar";
 export { CategoryPageRenderer } from "./CategoryPage";
 export { LanguageSwitcher } from "./LanguageSwitcher";
+export { PlaceholderBadge } from "./PlaceholderBadge";

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import type { Project } from "@/lib/mdx";
+import { PlaceholderBadge } from "@/components/PlaceholderBadge";
 
 interface ProjectsGridProps {
   projects: Project[];
@@ -69,6 +70,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           >
             <Link href={`/projekte/${project.slug}`} className="group block">
               <div className="relative aspect-[4/3] overflow-hidden bg-muted mb-4">
+                <PlaceholderBadge src={project.frontmatter.heroImage} />
                 <Image
                   src={project.frontmatter.heroImage}
                   alt={project.frontmatter.title}
@@ -85,7 +87,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   {project.frontmatter.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {project.frontmatter.excerpt}
+                  {project.frontmatter.description || project.frontmatter.excerpt}
                 </p>
               </div>
             </Link>

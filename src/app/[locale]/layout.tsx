@@ -32,6 +32,7 @@ export async function generateMetadata({
   const metadata = messages.metadata as { title: string; description: string };
 
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lightstories.de"),
     title: {
       default: metadata.title,
       template: `%s | Lightstories`,
@@ -64,7 +65,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth" className="relative">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >

@@ -25,9 +25,6 @@
   --font-serif: "Georgia", "Times New Roman", serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background: var(--background);

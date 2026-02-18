@@ -15,6 +15,7 @@ export interface ProjectFrontmatter {
   heroImage: string;
   gallery: string[];
   excerpt: string;
+  description?: string;
   client?: string;
   location?: string;
   testimonial?: string;

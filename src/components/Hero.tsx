@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { PlaceholderBadge } from "./PlaceholderBadge";
 
 interface HeroProps {
   title?: string;
@@ -55,6 +56,8 @@ export function Hero({
       ref={containerRef}
       className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}
     >
+      <PlaceholderBadge src={useVideo ? finalVideoSrc : (imageSrc || "")} />
+
       {/* Parallax Background Video or Image */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[130%] -top-[15%]">
         {useVideo ? (
