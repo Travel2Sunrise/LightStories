@@ -9,6 +9,7 @@
     "portrait": "Portrait",
     "family": "Familie",
     "projects": "Projekte",
+    "faq": "FAQ",
     "contact": "Kontakt",
     "about": "Über mich"
   },
@@ -39,6 +40,10 @@
   "category": {
     "viewProjects": "Projekte ansehen",
     "bookNow": "Jetzt anfragen"
+  },
+  "faq": {
+    "previewTitle": "Häufige Fragen",
+    "allQuestions": "Alle Fragen ansehen"
   },
   "projects": {
     "title": "Projekte",

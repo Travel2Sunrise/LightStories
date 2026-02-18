@@ -8,3 +8,4 @@ export { ContactInfoSidebar } from "./ContactInfoSidebar";
 export { CategoryPageRenderer } from "./CategoryPage";
 export { LanguageSwitcher } from "./LanguageSwitcher";
 export { PlaceholderBadge } from "./PlaceholderBadge";
+export { FaqPreview } from "./FaqPreview";

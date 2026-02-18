@@ -9,6 +9,7 @@
     "portrait": "Portrait",
     "family": "Family",
     "projects": "Projects",
+    "faq": "FAQ",
     "contact": "Contact",
     "about": "About"
   },
@@ -39,6 +40,10 @@
   "category": {
     "viewProjects": "View Projects",
     "bookNow": "Book Now"
+  },
+  "faq": {
+    "previewTitle": "Frequently Asked Questions",
+    "allQuestions": "View all questions"
   },
   "projects": {
     "title": "Projects",

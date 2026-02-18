@@ -1,8 +1,10 @@
 import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { getPage } from "@/lib/mdx";
 import { Hero } from "@/components/Hero";
 import { CategoryCard } from "@/components/CategoryCard";
+import { FaqPreview } from "@/components/FaqPreview";
 import { Link } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -33,6 +35,9 @@ export default async function HomePage({
   }
 
   const { frontmatter } = page;
+  const faqPage = getPage(locale, "faq");
+  const faqItems = faqPage?.frontmatter.faq ?? [];
+  const t = await getTranslations({ locale, namespace: "faq" });
 
   return (
     <>
@@ -85,6 +90,16 @@ export default async function HomePage({
             </div>
           </div>
         </section>
+      )}
+
+      {/* FAQ Preview */}
+      {faqItems.length > 0 && (
+        <FaqPreview
+          title={t("previewTitle")}
+          items={faqItems}
+          maxItems={3}
+          linkText={t("allQuestions")}
+        />
       )}
 
       {/* CTA Section */}

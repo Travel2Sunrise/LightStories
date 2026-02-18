@@ -65,6 +65,14 @@ export function Footer({ socialLinks }: FooterProps) {
                   {tNav("projects")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  {tNav("faq")}
+                </Link>
+              </li>
             </ul>
           </div>
 
