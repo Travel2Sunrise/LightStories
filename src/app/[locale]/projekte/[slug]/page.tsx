@@ -146,10 +146,10 @@ function ProjectPageInner({
 
       {/* Description */}
       <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {frontmatter.excerpt}
-          </p>
+        <div className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-4">
+          {frontmatter.excerpt.split("\n\n").map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
         </div>
       </section>
 

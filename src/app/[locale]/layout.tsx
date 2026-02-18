@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { getPage } from "@/lib/mdx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,7 +71,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Navigation />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <Footer socialLinks={getPage(locale, "kontakt")?.frontmatter.contactInfo?.social} />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -50,7 +50,7 @@ export function CategoryPageRenderer({
       {frontmatter.hero && (
         <Hero
           title={frontmatter.title}
-          subtitle={frontmatter.description}
+          subtitle=""
           imageSrc={frontmatter.hero.image}
           showCta={frontmatter.hero.showCta ?? false}
           height={frontmatter.hero.height ?? "large"}
@@ -59,10 +59,10 @@ export function CategoryPageRenderer({
 
       <section className="py-20 lg:py-32 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {frontmatter.description}
-            </p>
+          <div className="max-w-3xl mx-auto text-center mb-16 text-lg text-muted-foreground leading-relaxed space-y-4">
+            {frontmatter.description?.split("\n\n").map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </div>
 
           {images.length > 0 && (

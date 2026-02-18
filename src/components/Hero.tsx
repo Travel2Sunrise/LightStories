@@ -96,14 +96,14 @@ export function Hero({
           {title || t("title")}
         </motion.h1>
 
-        {(subtitle || t("subtitle")) && (
+        {(subtitle ?? t("subtitle")) && (
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl lg:text-2xl font-light tracking-wider text-white/90 mb-8"
           >
-            {subtitle || t("subtitle")}
+            {subtitle ?? t("subtitle")}
           </motion.p>
         )}
 

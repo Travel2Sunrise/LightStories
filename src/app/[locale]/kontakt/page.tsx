@@ -40,9 +40,11 @@ export default async function KontaktPage({
           <h1 className="text-4xl lg:text-5xl font-light tracking-wide mb-4">
             {page.frontmatter.title}
           </h1>
-          <p className="text-lg text-muted-foreground">
-            {page.frontmatter.subtitle}
-          </p>
+          <div className="text-lg text-muted-foreground space-y-4">
+            {page.frontmatter.subtitle?.split("\n\n").map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
