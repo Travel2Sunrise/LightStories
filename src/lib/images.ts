@@ -1,5 +1,7 @@
 import { readdirSync, existsSync } from "fs";
 import { join } from "path";
+import { __contentVersion } from "./content-trigger";
+void __contentVersion;
 
 /**
  * Get gallery images from a category directory

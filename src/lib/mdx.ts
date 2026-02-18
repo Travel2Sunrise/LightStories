@@ -1,8 +1,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { __contentVersion } from "./content-trigger";
 
 const contentDirectory = path.join(process.cwd(), "src/content");
+
+// Prevent tree-shaking so Turbopack tracks the dependency
+void __contentVersion;
 
 export interface ProjectFrontmatter {
   title: string;
@@ -30,7 +34,10 @@ export interface CategoryContent {
 }
 
 export interface HeroConfig {
-  image: string;
+  image?: string;
+  videoSrc?: string;
+  title?: string;
+  subtitle?: string;
   height?: "full" | "large" | "medium";
   showCta?: boolean;
   ctaText?: string;
@@ -45,8 +52,23 @@ export interface GalleryConfig {
 }
 
 export interface CtaConfig {
+  title?: string;
   projectsLink?: string;
   contactLink?: string;
+  text?: string;
+  href?: string;
+}
+
+export interface CategoryItem {
+  title: string;
+  description: string;
+  imageSrc: string;
+  href: string;
+}
+
+export interface AboutConfig {
+  title: string;
+  text: string;
 }
 
 export interface SocialLink {
@@ -74,6 +96,9 @@ export interface PageFrontmatter {
   cta?: CtaConfig;
   contactInfo?: ContactInfoConfig;
   showContactForm?: boolean;
+  categoriesTitle?: string;
+  categories?: CategoryItem[];
+  about?: AboutConfig;
 }
 
 export interface Page {
