@@ -2,12 +2,12 @@
 
 import { isPlaceholder } from "@/lib/placeholders";
 
-export function PlaceholderBadge({ src }: { src: string }) {
+export function PlaceholderBadge({ src, className }: { src: string; className?: string }) {
   if (!isPlaceholder(src)) return null;
 
   return (
     <div
-      className="absolute top-0 left-0 z-40 overflow-hidden pointer-events-none"
+      className={`absolute top-0 left-0 z-40 overflow-hidden pointer-events-none ${className || ""}`}
       style={{ width: "150px", height: "150px" }}
       aria-hidden="true"
     >

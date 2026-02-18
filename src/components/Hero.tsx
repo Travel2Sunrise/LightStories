@@ -56,8 +56,6 @@ export function Hero({
       ref={containerRef}
       className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}
     >
-      <PlaceholderBadge src={useVideo ? finalVideoSrc : (imageSrc || "")} />
-
       {/* Parallax Background Video or Image */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[130%] -top-[15%]">
         {useVideo ? (
@@ -125,6 +123,8 @@ export function Hero({
           </motion.div>
         )}
       </motion.div>
+
+      <PlaceholderBadge src={useVideo ? finalVideoSrc : (imageSrc || "")} className="left-0 top-20" />
 
       {/* Scroll Indicator */}
       {height === "full" && (
