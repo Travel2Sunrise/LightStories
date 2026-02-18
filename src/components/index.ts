@@ -4,4 +4,6 @@ export { Hero } from "./Hero";
 export { CategoryCard } from "./CategoryCard";
 export { Gallery } from "./Gallery";
 export { ContactForm } from "./ContactForm";
+export { ContactInfoSidebar } from "./ContactInfoSidebar";
+export { CategoryPageRenderer } from "./CategoryPage";
 export { LanguageSwitcher } from "./LanguageSwitcher";

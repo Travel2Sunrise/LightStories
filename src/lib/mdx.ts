@@ -29,6 +29,59 @@ export interface CategoryContent {
   gallery: string[];
 }
 
+export interface HeroConfig {
+  image: string;
+  height?: "full" | "large" | "medium";
+  showCta?: boolean;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+export interface GalleryConfig {
+  source: "category" | "manual";
+  categoryDir?: string;
+  columns?: 2 | 3 | 4;
+  images?: string[];
+}
+
+export interface CtaConfig {
+  projectsLink?: string;
+  contactLink?: string;
+}
+
+export interface SocialLink {
+  platform: string;
+  url: string;
+}
+
+export interface ContactInfoConfig {
+  email?: string;
+  phone?: string;
+  phoneDisplay?: string;
+  location?: string;
+  social?: SocialLink[];
+}
+
+export interface PageFrontmatter {
+  title: string;
+  description?: string;
+  subtitle?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  layout?: "prose" | "default";
+  hero?: HeroConfig;
+  gallery?: GalleryConfig;
+  cta?: CtaConfig;
+  contactInfo?: ContactInfoConfig;
+  showContactForm?: boolean;
+}
+
+export interface Page {
+  slug: string;
+  frontmatter: PageFrontmatter;
+  content: string;
+}
+
 /**
  * Get all projects for a specific locale
  */
@@ -128,4 +181,25 @@ export function getCategoryContent(
   const { data } = matter(fileContents);
 
   return data as CategoryContent;
+}
+
+/**
+ * Get a generic page by slug for a specific locale.
+ * Looks for src/content/{locale}/{slug}.mdx
+ */
+export function getPage(locale: string, slug: string): Page | null {
+  const fullPath = path.join(contentDirectory, locale, `${slug}.mdx`);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    frontmatter: data as PageFrontmatter,
+    content,
+  };
 }
