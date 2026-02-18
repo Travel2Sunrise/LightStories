@@ -52,3 +52,4 @@ Three photography categories with German route names: `/hochzeit`, `/portrait`, 
 
 - `RESEND_API_KEY` — Required for contact form email sending
 - `CONTACT_EMAIL` — Recipient email for contact submissions
+- `NEXT_PUBLIC_SHOW_PLACEHOLDERS=true` — Display the placeholder tag for images defined in `src/config/placeholder-media.json`
