@@ -237,7 +237,14 @@ Create a `.env.local` file for local development:
 ```
 RESEND_API_KEY=your_resend_api_key
 CONTACT_EMAIL=your@email.com
+NEXT_PUBLIC_SHOW_PLACEHOLDERS=true
 ```
+
+| Variable | Required | Description |
+|---|---|---|
+| `RESEND_API_KEY` | Yes | API key for sending contact form emails via Resend |
+| `CONTACT_EMAIL` | Yes | Recipient email address for contact form submissions |
+| `NEXT_PUBLIC_SHOW_PLACEHOLDERS` | No | Set to `true` to show a badge on images that are placeholders (useful during development). Defaults to off. |
 
 ## Design Philosophy
 
