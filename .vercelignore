@@ -1,0 +1,18 @@
+# Testing
+tests/
+test-results/
+playwright-report/
+playwright.config.ts
+
+# Development scripts
+scripts/
+
+# Documentation
+README.md
+CLAUDE.md
+
+# Editor/IDE config
+.opencode/
+
+# Development env
+.env.development
