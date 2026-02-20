@@ -29,26 +29,27 @@ export function getCategoryImages(category: string): string[] {
   try {
     const files = readdirSync(imageDir);
     
-    // Filter for numbered images (1.jpg, 2.png, etc.) and supported formats
+    // Filter for supported image formats, excluding hero images
     const imageFiles = files
       .filter((file) => {
         const ext = file.toLowerCase().substring(file.lastIndexOf("."));
-        const nameWithoutExt = file.substring(0, file.lastIndexOf("."));
-        
-        // Check if it's a numbered file (matches pattern like "1", "2", "10", etc.)
-        const isNumbered = /^\d+$/.test(nameWithoutExt);
-        
+        const nameWithoutExt = file.substring(0, file.lastIndexOf(".")).toLowerCase();
+
         return (
-          isNumbered &&
           supportedExtensions.includes(ext) &&
-          !file.includes("hero")
+          !nameWithoutExt.startsWith("hero")
         );
       })
       .sort((a, b) => {
-        // Sort numerically by the number in the filename
-        const numA = parseInt(a.substring(0, a.lastIndexOf(".")));
-        const numB = parseInt(b.substring(0, b.lastIndexOf(".")));
-        return numA - numB;
+        const nameA = a.substring(0, a.lastIndexOf("."));
+        const nameB = b.substring(0, b.lastIndexOf("."));
+        // Sort numbered files first, then alphabetically
+        const numA = parseInt(nameA);
+        const numB = parseInt(nameB);
+        if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+        if (!isNaN(numA)) return -1;
+        if (!isNaN(numB)) return 1;
+        return nameA.localeCompare(nameB);
       })
       .map((file) => `/images/${category}/${file}`);
 
