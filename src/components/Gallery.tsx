@@ -17,9 +17,9 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const columnClasses = {
-    2: "grid-cols-1 md:grid-cols-2",
-    3: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-    4: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+    2: "columns-1 md:columns-2",
+    3: "columns-1 md:columns-2 lg:columns-3",
+    4: "columns-2 md:columns-3 lg:columns-4",
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -38,7 +38,7 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
 
   return (
     <>
-      <div className={`grid ${columnClasses[columns]} gap-4`}>
+      <div className={`${columnClasses[columns]} gap-4`}>
         {images.map((image, index) => (
           <motion.div
             key={image.src}
@@ -46,15 +46,16 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
-            className="relative aspect-[4/5] overflow-hidden bg-muted cursor-pointer group"
+            className="relative overflow-hidden cursor-pointer group mb-4 break-inside-avoid"
             onClick={() => setSelectedImage(index)}
           >
             <PlaceholderBadge src={image.src} />
             <Image
               src={image.src}
               alt={image.alt || `Gallery image ${index + 1}`}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              width={800}
+              height={600}
+              className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
