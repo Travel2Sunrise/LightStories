@@ -48,6 +48,10 @@ All pages are MDX-driven. Content lives in `src/content/{locale}/` as `.mdx` fil
 
 Three photography categories with German route names: `/hochzeit`, `/portrait`, `/familie`. Each reads its MDX file via `getPage()` and delegates to `CategoryPageRenderer`. Gallery images auto-discovered from `public/images/{category}/` via `getCategoryImages()` in `src/lib/images.ts`.
 
+### Troubleshooting
+
+- **Stale images after replacing files**: Next.js caches optimized images in `.next/`. When swapping image files on disk, delete `.next/` and restart the dev server to force a clean rebuild.
+
 ## Environment Variables
 
 - `RESEND_API_KEY` — Required for contact form email sending

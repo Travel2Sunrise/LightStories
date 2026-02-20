@@ -47,9 +47,10 @@ export function Hero({
     medium: "min-h-[60vh]",
   };
 
-  // Default to video for homepage if neither is specified
-  const useVideo = videoSrc || (!imageSrc && !videoSrc);
-  const finalVideoSrc = videoSrc || "/images/hero-bg.mp4";
+  // Default to image for homepage if neither is specified
+  const useVideo = !!videoSrc;
+  const finalVideoSrc = videoSrc || "";
+  const finalImageSrc = imageSrc || "/images/hero-bg.jpg";
 
   return (
     <section
@@ -70,7 +71,7 @@ export function Hero({
           </video>
         ) : (
           <Image
-            src={imageSrc!}
+            src={finalImageSrc}
             alt="Hero background"
             fill
             priority
@@ -124,7 +125,7 @@ export function Hero({
         )}
       </motion.div>
 
-      <PlaceholderBadge src={useVideo ? finalVideoSrc : (imageSrc || "")} className="left-0 top-20" />
+      <PlaceholderBadge src={useVideo ? finalVideoSrc : finalImageSrc} className="left-0 top-20" />
 
       {/* Scroll Indicator */}
       {height === "full" && (

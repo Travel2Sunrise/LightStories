@@ -13,6 +13,7 @@ export interface ProjectFrontmatter {
   date: string;
   category: "hochzeit" | "portrait" | "familie";
   heroImage: string;
+  heroBg?: string;
   gallery: string[];
   excerpt: string;
   description?: string;

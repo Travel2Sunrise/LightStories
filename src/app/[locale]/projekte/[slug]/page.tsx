@@ -81,13 +81,14 @@ function ProjectPageInner({
   const { frontmatter } = project;
 
   const galleryImages = frontmatter.gallery.map((src) => ({ src }));
+  const heroBackground = frontmatter.heroBg || frontmatter.heroImage;
 
   return (
     <>
       {/* Hero Image */}
       <section className="relative h-[70vh] min-h-[500px]">
         <Image
-          src={frontmatter.heroImage}
+          src={heroBackground}
           alt={frontmatter.title}
           fill
           className="object-cover"
@@ -95,7 +96,7 @@ function ProjectPageInner({
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        <PlaceholderBadge src={frontmatter.heroImage} className="left-0 top-20" />
+        <PlaceholderBadge src={heroBackground} className="left-0 top-20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
           <div className="max-w-7xl mx-auto">
             <p className="text-white/80 text-sm uppercase tracking-wider mb-2">
