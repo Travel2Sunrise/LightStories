@@ -10,6 +10,10 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
+    locale: "de-DE",
+    extraHTTPHeaders: {
+      "Accept-Language": "de-DE,de;q=0.9",
+    },
   },
   projects: [
     {
