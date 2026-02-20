@@ -154,6 +154,7 @@ npm start
 
 ### Adding a New Project
 
+
 Projects are fully dynamic — just add a file and it appears on the site. No code changes needed.
 
 **Step 1: Add your images**
