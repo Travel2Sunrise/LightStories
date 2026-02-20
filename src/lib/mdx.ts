@@ -1,16 +1,22 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { __contentVersion } from "./content-trigger";
 
 const contentDirectory = path.join(process.cwd(), "src/content");
+
+// Prevent tree-shaking so Turbopack tracks the dependency
+void __contentVersion;
 
 export interface ProjectFrontmatter {
   title: string;
   date: string;
   category: "hochzeit" | "portrait" | "familie";
   heroImage: string;
+  heroBg?: string;
   gallery: string[];
   excerpt: string;
+  description?: string;
   client?: string;
   location?: string;
   testimonial?: string;
@@ -27,6 +33,94 @@ export interface CategoryContent {
   description: string;
   heroImage: string;
   gallery: string[];
+}
+
+export interface HeroConfig {
+  image?: string;
+  videoSrc?: string;
+  title?: string;
+  subtitle?: string;
+  height?: "full" | "large" | "medium";
+  showCta?: boolean;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+export interface GalleryConfig {
+  source: "category" | "manual";
+  categoryDir?: string;
+  columns?: 2 | 3 | 4;
+  images?: string[];
+}
+
+export interface CtaConfig {
+  title?: string;
+  projectsLink?: string;
+  contactLink?: string;
+  text?: string;
+  href?: string;
+}
+
+export interface CategoryItem {
+  title: string;
+  description: string;
+  imageSrc: string;
+  href: string;
+}
+
+export interface AboutConfig {
+  title: string;
+  text: string;
+}
+
+export interface SocialLink {
+  platform: string;
+  url: string;
+}
+
+export interface ContactInfoConfig {
+  email?: string;
+  phone?: string;
+  phoneDisplay?: string;
+  location?: string;
+  social?: SocialLink[];
+}
+
+export interface PageFrontmatter {
+  title: string;
+  description?: string;
+  subtitle?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  layout?: "prose" | "default";
+  hero?: HeroConfig;
+  gallery?: GalleryConfig;
+  cta?: CtaConfig;
+  contactInfo?: ContactInfoConfig;
+  showContactForm?: boolean;
+  categoriesTitle?: string;
+  categories?: CategoryItem[];
+  about?: AboutConfig;
+  processTitle?: string;
+  process?: ProcessStep[];
+  faqTitle?: string;
+  faq?: FaqItem[];
+}
+
+export interface ProcessStep {
+  title: string;
+  text: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Page {
+  slug: string;
+  frontmatter: PageFrontmatter;
+  content: string;
 }
 
 /**
@@ -128,4 +222,25 @@ export function getCategoryContent(
   const { data } = matter(fileContents);
 
   return data as CategoryContent;
+}
+
+/**
+ * Get a generic page by slug for a specific locale.
+ * Looks for src/content/{locale}/{slug}.mdx
+ */
+export function getPage(locale: string, slug: string): Page | null {
+  const fullPath = path.join(contentDirectory, locale, `${slug}.mdx`);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    frontmatter: data as PageFrontmatter,
+    content,
+  };
 }

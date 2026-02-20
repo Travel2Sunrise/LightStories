@@ -45,7 +45,7 @@ test.describe("Projects Page", () => {
 
 test.describe("Single Project Page", () => {
   test("should display project details", async ({ page }) => {
-    await page.goto("/projekte/sarah-michael-hochzeit");
+    await page.goto("/projekte/babybauch-sarah");
     
     // Check for project title
     await expect(page.locator("h1")).toBeVisible();
@@ -56,7 +56,7 @@ test.describe("Single Project Page", () => {
   });
 
   test("should display gallery", async ({ page }) => {
-    await page.goto("/projekte/sarah-michael-hochzeit");
+    await page.goto("/projekte/babybauch-sarah");
     
     // Should have gallery images
     const galleryImages = page.locator("section img");
@@ -64,7 +64,7 @@ test.describe("Single Project Page", () => {
   });
 
   test("should have navigation back to projects", async ({ page }) => {
-    await page.goto("/projekte/sarah-michael-hochzeit");
+    await page.goto("/projekte/babybauch-sarah");
     
     await expect(page.locator('a:has-text("Zurück zu Projekten")')).toBeVisible();
   });

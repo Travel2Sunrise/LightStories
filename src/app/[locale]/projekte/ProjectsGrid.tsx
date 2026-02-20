@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import type { Project } from "@/lib/mdx";
+import { PlaceholderBadge } from "@/components/PlaceholderBadge";
 
 interface ProjectsGridProps {
   projects: Project[];
@@ -68,12 +69,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Link href={`/projekte/${project.slug}`} className="group block">
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted mb-4">
+              <div className="relative aspect-[4/3] overflow-hidden mb-4">
+                <PlaceholderBadge src={project.frontmatter.heroImage} />
                 <Image
                   src={project.frontmatter.heroImage}
                   alt={project.frontmatter.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover scale-[1.02] transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
@@ -85,7 +87,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   {project.frontmatter.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {project.frontmatter.excerpt}
+                  {project.frontmatter.description || project.frontmatter.excerpt}
                 </p>
               </div>
             </Link>

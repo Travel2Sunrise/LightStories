@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { PlaceholderBadge } from "./PlaceholderBadge";
 
 interface HeroProps {
   title?: string;
@@ -46,9 +47,10 @@ export function Hero({
     medium: "min-h-[60vh]",
   };
 
-  // Default to video for homepage if neither is specified
-  const useVideo = videoSrc || (!imageSrc && !videoSrc);
-  const finalVideoSrc = videoSrc || "/images/hero-bg.mp4";
+  // Default to image for homepage if neither is specified
+  const useVideo = !!videoSrc;
+  const finalVideoSrc = videoSrc || "";
+  const finalImageSrc = imageSrc || "/images/hero-bg.jpg";
 
   return (
     <section
@@ -69,7 +71,7 @@ export function Hero({
           </video>
         ) : (
           <Image
-            src={imageSrc!}
+            src={finalImageSrc}
             alt="Hero background"
             fill
             priority
@@ -96,14 +98,14 @@ export function Hero({
           {title || t("title")}
         </motion.h1>
 
-        {(subtitle || t("subtitle")) && (
+        {(subtitle ?? t("subtitle")) && (
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl lg:text-2xl font-light tracking-wider text-white/90 mb-8"
           >
-            {subtitle || t("subtitle")}
+            {subtitle ?? t("subtitle")}
           </motion.p>
         )}
 
@@ -122,6 +124,8 @@ export function Hero({
           </motion.div>
         )}
       </motion.div>
+
+      <PlaceholderBadge src={useVideo ? finalVideoSrc : finalImageSrc} className="left-0 top-20" />
 
       {/* Scroll Indicator */}
       {height === "full" && (

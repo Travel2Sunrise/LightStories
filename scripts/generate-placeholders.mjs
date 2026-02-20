@@ -70,11 +70,11 @@ const images = [
     h: 1500
   })),
   
-  // Project: Sarah & Michael
-  { path: 'projekte/sarah-michael/hero.jpg', text: 'Sarah & Michael', w: 1920, h: 1080 },
+  // Project: Babybauch Sarah
+  { path: 'projekte/babybauch-sarah/hero.jpg', text: 'Babybauch Sarah', w: 1920, h: 1080 },
   ...Array.from({ length: 6 }, (_, i) => ({
-    path: `projekte/sarah-michael/${i + 1}.jpg`,
-    text: `Hochzeit ${i + 1}`,
+    path: `projekte/babybauch-sarah/${i + 1}.jpg`,
+    text: `Babybauch ${i + 1}`,
     w: 1200,
     h: 1500
   })),
@@ -88,11 +88,11 @@ const images = [
     h: 1500
   })),
   
-  // Project: Mueller Familie
-  { path: 'projekte/mueller-familie/hero.jpg', text: 'Familie Mueller', w: 1920, h: 1080 },
+  // Project: Taufe Max
+  { path: 'projekte/taufe-max/hero.jpg', text: 'Taufe Max', w: 1920, h: 1080 },
   ...Array.from({ length: 5 }, (_, i) => ({
-    path: `projekte/mueller-familie/${i + 1}.jpg`,
-    text: `Familie ${i + 1}`,
+    path: `projekte/taufe-max/${i + 1}.jpg`,
+    text: `Taufe ${i + 1}`,
     w: 1200,
     h: 1500
   })),

@@ -3,9 +3,11 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { getPage } from "@/lib/mdx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +33,7 @@ export async function generateMetadata({
   const metadata = messages.metadata as { title: string; description: string };
 
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lightstories.de"),
     title: {
       default: metadata.title,
       template: `%s | Lightstories`,
@@ -63,15 +66,17 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth" className="relative" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Navigation />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            <Navigation />
+            <main className="flex-1">{children}</main>
+            <Footer socialLinks={getPage(locale, "kontakt")?.frontmatter.contactInfo?.social} />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

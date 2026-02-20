@@ -55,9 +55,9 @@ export function ContactForm() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center py-12"
       >
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
           <svg
-            className="w-8 h-8 text-green-600"
+            className="w-8 h-8 text-green-600 dark:text-green-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -89,7 +89,7 @@ export function ContactForm() {
           id="name"
           {...register("name", { required: true })}
           placeholder={t("namePlaceholder")}
-          className={`w-full px-4 py-3 border rounded-lg bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
+          className={`w-full px-4 py-3 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
             errors.name ? "border-red-500" : "border-secondary"
           }`}
         />
@@ -105,7 +105,7 @@ export function ContactForm() {
           id="email"
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
           placeholder={t("emailPlaceholder")}
-          className={`w-full px-4 py-3 border rounded-lg bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
+          className={`w-full px-4 py-3 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
             errors.email ? "border-red-500" : "border-secondary"
           }`}
         />
@@ -121,7 +121,7 @@ export function ContactForm() {
           id="phone"
           {...register("phone")}
           placeholder={t("phonePlaceholder")}
-          className="w-full px-4 py-3 border border-secondary rounded-lg bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+          className="w-full px-4 py-3 border border-secondary rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
         />
       </div>
 
@@ -133,7 +133,7 @@ export function ContactForm() {
         <select
           id="category"
           {...register("category", { required: true })}
-          className={`w-full px-4 py-3 border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
+          className={`w-full px-4 py-3 border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors ${
             errors.category ? "border-red-500" : "border-secondary"
           }`}
         >
@@ -153,7 +153,7 @@ export function ContactForm() {
           type="date"
           id="date"
           {...register("date")}
-          className="w-full px-4 py-3 border border-secondary rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+          className="w-full px-4 py-3 border border-secondary rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
         />
       </div>
 
@@ -167,7 +167,7 @@ export function ContactForm() {
           rows={5}
           {...register("message", { required: true })}
           placeholder={t("messagePlaceholder")}
-          className={`w-full px-4 py-3 border rounded-lg bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors resize-none ${
+          className={`w-full px-4 py-3 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors resize-none ${
             errors.message ? "border-red-500" : "border-secondary"
           }`}
         />
@@ -191,7 +191,7 @@ export function ContactForm() {
 
       {/* Error Message */}
       {status === "error" && (
-        <div className="p-4 bg-red-50 text-red-600 rounded-lg text-sm">
+        <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm">
           {t("error")}
         </div>
       )}
