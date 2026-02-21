@@ -16,7 +16,7 @@
     "generate:blur": "node scripts/generate-blur-data.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "optimize:images:dry-run": "node scripts/optimize-images.mjs --dry-run",
-    "prebuild": "node scripts/generate-blur-data.mjs"
+    "prebuild": "node scripts/optimize-images.mjs && node scripts/generate-blur-data.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
