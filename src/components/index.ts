@@ -10,3 +10,4 @@ export { LanguageSwitcher } from "./LanguageSwitcher";
 export { PlaceholderBadge } from "./PlaceholderBadge";
 export { FaqPreview } from "./FaqPreview";
 export { ThemeToggle } from "./ThemeToggle";
+export { CookieBanner } from "./CookieBanner";

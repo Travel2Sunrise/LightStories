@@ -76,7 +76,9 @@
       "datePlaceholder": "DD.MM.YYYY",
       "message": "Message",
       "messagePlaceholder": "Tell me about your project...",
-      "privacy": "I have read the privacy policy and agree to the processing of my data.",
+      "privacyPrefix": "I have read the ",
+      "privacyLink": "privacy policy",
+      "privacySuffix": " and agree to the processing of my data.",
       "submit": "Send Inquiry",
       "sending": "Sending...",
       "success": "Thank you for your inquiry! I'll get back to you as soon as possible.",
@@ -101,6 +103,11 @@
     "hochzeit": "Wedding",
     "portrait": "Portrait",
     "familie": "Family"
+  },
+  "cookies": {
+    "message": "This website uses only technically necessary cookies.",
+    "link": "Learn more",
+    "accept": "Got it"
   },
   "theme": {
     "light": "Light",

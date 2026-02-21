@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/CookieBanner";
 import { getPage } from "@/lib/mdx";
 
 const geistSans = Geist({
@@ -75,6 +76,7 @@ export default async function LocaleLayout({
             <Navigation />
             <main className="flex-1">{children}</main>
             <Footer socialLinks={getPage(locale, "kontakt")?.frontmatter.contactInfo?.social} />
+            <CookieBanner />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 
 interface ContactFormData {
@@ -18,7 +19,9 @@ interface ContactFormData {
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const tCategories = useTranslations("categories");
+  const locale = useLocale();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const privacyHref = locale === "de" ? "/datenschutz" : "/en/datenschutz";
 
   const {
     register,
@@ -185,7 +188,16 @@ export function ContactForm() {
           htmlFor="privacy"
           className={`text-sm ${errors.privacy ? "text-red-500" : "text-muted-foreground"}`}
         >
-          {t("privacy")} *
+          {t("privacyPrefix")}
+          <a
+            href={privacyHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground transition-colors"
+          >
+            {t("privacyLink")}
+          </a>
+          {t("privacySuffix")} *
         </label>
       </div>
 
