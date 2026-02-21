@@ -12,6 +12,7 @@ interface HeroProps {
   subtitle?: string;
   videoSrc?: string;
   imageSrc?: string;
+  blurDataURL?: string;
   showCta?: boolean;
   ctaText?: string;
   ctaHref?: string;
@@ -24,6 +25,7 @@ export function Hero({
   subtitle,
   videoSrc,
   imageSrc,
+  blurDataURL,
   showCta = true,
   ctaText,
   ctaHref = "/projekte",
@@ -77,6 +79,8 @@ export function Hero({
             priority
             className="object-cover"
             sizes="100vw"
+            placeholder={blurDataURL ? "blur" : undefined}
+            blurDataURL={blurDataURL}
           />
         )}
         {overlay && (

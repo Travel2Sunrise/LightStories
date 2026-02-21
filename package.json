@@ -12,7 +12,11 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "generate:placeholders": "node scripts/generate-placeholders.mjs"
+    "generate:placeholders": "node scripts/generate-placeholders.mjs",
+    "generate:blur": "node scripts/generate-blur-data.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "optimize:images:dry-run": "node scripts/optimize-images.mjs --dry-run",
+    "prebuild": "node scripts/generate-blur-data.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

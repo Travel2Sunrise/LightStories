@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getProjects, getPage } from "@/lib/mdx";
 import type { FaqItem, PageFrontmatter } from "@/lib/mdx";
 import { FaqPreview } from "@/components/FaqPreview";
+import { getBlurDataURL } from "@/lib/blur";
 import { ProjectsGrid } from "./ProjectsGrid";
 
 export async function generateMetadata({
@@ -34,9 +35,17 @@ export default async function ProjektePage({
   const faqItems: FaqItem[] = faqPage?.frontmatter.faq ?? [];
   const t = await getTranslations({ locale, namespace: "faq" });
 
+  // Build blur data map for project hero images
+  const blurDataMap: Record<string, string> = {};
+  for (const project of projects) {
+    const blur = getBlurDataURL(project.frontmatter.heroImage);
+    if (blur) blurDataMap[project.frontmatter.heroImage] = blur;
+  }
+
   return (
     <ProjektePageInner
       projects={projects}
+      blurDataMap={blurDataMap}
       frontmatter={page?.frontmatter ?? { title: "Projekte" }}
       faqItems={faqItems}
       faqTitle={t("previewTitle")}
@@ -68,12 +77,14 @@ function ProjectsGridSkeleton() {
 
 function ProjektePageInner({
   projects,
+  blurDataMap,
   frontmatter,
   faqItems,
   faqTitle,
   faqLinkText,
 }: {
   projects: ReturnType<typeof getProjects>;
+  blurDataMap: Record<string, string>;
   frontmatter: PageFrontmatter;
   faqItems: FaqItem[];
   faqTitle: string;
@@ -95,7 +106,7 @@ function ProjektePageInner({
           </div>
 
           <Suspense fallback={<ProjectsGridSkeleton />}>
-            <ProjectsGrid projects={projects} />
+            <ProjectsGrid projects={projects} blurDataMap={blurDataMap} />
           </Suspense>
         </div>
       </section>

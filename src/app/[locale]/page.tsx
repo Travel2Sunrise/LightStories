@@ -5,6 +5,7 @@ import { getPage } from "@/lib/mdx";
 import { Hero } from "@/components/Hero";
 import { CategoryCard } from "@/components/CategoryCard";
 import { FaqPreview } from "@/components/FaqPreview";
+import { getBlurDataURL } from "@/lib/blur";
 import { Link } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -47,6 +48,7 @@ export default async function HomePage({
         subtitle={frontmatter.hero?.subtitle}
         videoSrc={frontmatter.hero?.videoSrc}
         imageSrc={frontmatter.hero?.image}
+        blurDataURL={frontmatter.hero?.image ? getBlurDataURL(frontmatter.hero.image) : undefined}
         showCta={frontmatter.hero?.showCta ?? true}
         ctaText={frontmatter.hero?.ctaText}
         ctaHref={frontmatter.hero?.ctaHref}
@@ -67,6 +69,7 @@ export default async function HomePage({
                   title={category.title}
                   description={category.description}
                   imageSrc={category.imageSrc}
+                  blurDataURL={getBlurDataURL(category.imageSrc)}
                   href={category.href}
                   index={index}
                 />

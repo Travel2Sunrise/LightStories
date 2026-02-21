@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# image optimization
+/originals-backup/
+src/config/blur-data.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

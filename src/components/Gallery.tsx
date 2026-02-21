@@ -9,6 +9,7 @@ interface GalleryProps {
   images: {
     src: string;
     alt?: string;
+    blurDataURL?: string;
   }[];
   columns?: 2 | 3 | 4;
 }
@@ -57,6 +58,8 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
               height={600}
               className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              placeholder={image.blurDataURL ? "blur" : undefined}
+              blurDataURL={image.blurDataURL}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
           </motion.div>
@@ -164,6 +167,8 @@ export function Gallery({ images, columns = 3 }: GalleryProps) {
                 className="object-contain"
                 sizes="90vw"
                 priority
+                placeholder={images[selectedImage].blurDataURL ? "blur" : undefined}
+                blurDataURL={images[selectedImage].blurDataURL}
               />
             </motion.div>
 

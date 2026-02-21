@@ -5,6 +5,8 @@ import Image from "next/image";
 import { getProject, getProjectSlugs, getProjects } from "@/lib/mdx";
 import { Gallery } from "@/components/Gallery";
 import { PlaceholderBadge } from "@/components/PlaceholderBadge";
+import { getBlurDataURL } from "@/lib/blur";
+import { getProjectImages } from "@/lib/images";
 import { Link } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 
@@ -80,8 +82,10 @@ function ProjectPageInner({
   const tCategories = useTranslations("categories");
   const { frontmatter } = project;
 
-  const galleryImages = frontmatter.gallery.map((src) => ({ src }));
+  const gallerySources = getProjectImages(frontmatter.heroImage);
+  const galleryImages = gallerySources.map((src) => ({ src, blurDataURL: getBlurDataURL(src) }));
   const heroBackground = frontmatter.heroBg || frontmatter.heroImage;
+  const heroBlurDataURL = getBlurDataURL(heroBackground);
 
   return (
     <>
@@ -94,6 +98,8 @@ function ProjectPageInner({
           className="object-cover"
           priority
           sizes="100vw"
+          placeholder={heroBlurDataURL ? "blur" : undefined}
+          blurDataURL={heroBlurDataURL}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <PlaceholderBadge src={heroBackground} className="left-0 top-20" />

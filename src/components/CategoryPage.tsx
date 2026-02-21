@@ -1,8 +1,9 @@
 import { Hero } from "@/components/Hero";
 import { Gallery } from "@/components/Gallery";
 import { Link } from "@/i18n/routing";
-import { getCategoryImages } from "@/lib/images";
+import { getCategoryImages, getProjectImages } from "@/lib/images";
 import { getProjectsByCategory } from "@/lib/mdx";
+import { getBlurDataURL } from "@/lib/blur";
 import type { Page } from "@/lib/mdx";
 
 interface CategoryPageProps {
@@ -23,26 +24,26 @@ export function CategoryPageRenderer({
   const { frontmatter } = page;
 
   // Resolve gallery images
-  let images: { src: string }[] = [];
+  let images: { src: string; blurDataURL?: string }[] = [];
   if (
     frontmatter.gallery?.source === "category" &&
     frontmatter.gallery.categoryDir
   ) {
     const categoryImages = getCategoryImages(frontmatter.gallery.categoryDir);
     if (categoryImages.length > 0) {
-      images = categoryImages.map((src) => ({ src }));
+      images = categoryImages.map((src) => ({ src, blurDataURL: getBlurDataURL(src) }));
     } else {
       // Fallback to project gallery images
       const projects = getProjectsByCategory(locale, categoryKey);
       images = projects.flatMap((p) =>
-        p.frontmatter.gallery.slice(0, 2).map((src) => ({ src }))
+        getProjectImages(p.frontmatter.heroImage).slice(0, 2).map((src) => ({ src, blurDataURL: getBlurDataURL(src) }))
       );
     }
   } else if (
     frontmatter.gallery?.source === "manual" &&
     frontmatter.gallery.images
   ) {
-    images = frontmatter.gallery.images.map((src) => ({ src }));
+    images = frontmatter.gallery.images.map((src) => ({ src, blurDataURL: getBlurDataURL(src) }));
   }
 
   return (
@@ -52,6 +53,7 @@ export function CategoryPageRenderer({
           title={frontmatter.title}
           subtitle=""
           imageSrc={frontmatter.hero.image}
+          blurDataURL={frontmatter.hero.image ? getBlurDataURL(frontmatter.hero.image) : undefined}
           showCta={frontmatter.hero.showCta ?? false}
           height={frontmatter.hero.height ?? "large"}
         />

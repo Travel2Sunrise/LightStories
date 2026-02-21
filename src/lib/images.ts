@@ -4,12 +4,13 @@ import { __contentVersion } from "./content-trigger";
 void __contentVersion;
 
 /**
- * Get gallery images from a category directory
+ * Get gallery images from an image directory (relative to public/images/).
  * Supports common image formats: jpg, jpeg, png, webp, gif, tiff, tif, bmp
  * Returns images sorted by filename (1.jpg, 2.png, etc.)
+ * Excludes hero images (hero.*, hero-bg.*).
  */
-export function getCategoryImages(category: string): string[] {
-  const imageDir = join(process.cwd(), "public", "images", category);
+export function getImagesFromDir(dir: string): string[] {
+  const imageDir = join(process.cwd(), "public", "images", dir);
   
   if (!existsSync(imageDir)) {
     return [];
@@ -51,11 +52,29 @@ export function getCategoryImages(category: string): string[] {
         if (!isNaN(numB)) return 1;
         return nameA.localeCompare(nameB);
       })
-      .map((file) => `/images/${category}/${file}`);
+      .map((file) => `/images/${dir}/${file}`);
 
     return imageFiles;
   } catch (error) {
     console.error(`Error reading images from ${imageDir}:`, error);
     return [];
   }
+}
+
+/** Backwards-compatible alias for category pages. */
+export function getCategoryImages(category: string): string[] {
+  return getImagesFromDir(category);
+}
+
+/**
+ * Auto-discover gallery images for a project based on its heroImage path.
+ * Derives the directory from e.g. "/images/projekte/anna-portrait/hero.jpg"
+ * → reads all non-hero images from public/images/projekte/anna-portrait/.
+ */
+export function getProjectImages(heroImage: string): string[] {
+  // heroImage is like "/images/projekte/taufe-max/hero.png"
+  // Strip leading "/images/" and take the directory part
+  const withoutPrefix = heroImage.replace(/^\/images\//, "");
+  const dir = withoutPrefix.substring(0, withoutPrefix.lastIndexOf("/"));
+  return getImagesFromDir(dir);
 }

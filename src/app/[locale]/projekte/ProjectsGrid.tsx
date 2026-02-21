@@ -11,11 +11,12 @@ import { PlaceholderBadge } from "@/components/PlaceholderBadge";
 
 interface ProjectsGridProps {
   projects: Project[];
+  blurDataMap?: Record<string, string>;
 }
 
 const categories = ["all", "hochzeit", "portrait", "familie"] as const;
 
-export function ProjectsGrid({ projects }: ProjectsGridProps) {
+export function ProjectsGrid({ projects, blurDataMap }: ProjectsGridProps) {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
@@ -77,6 +78,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   fill
                   className="object-cover scale-[1.02] transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  placeholder={blurDataMap?.[project.frontmatter.heroImage] ? "blur" : undefined}
+                  blurDataURL={blurDataMap?.[project.frontmatter.heroImage]}
                 />
               </div>
               <div>

@@ -14,7 +14,7 @@ export interface ProjectFrontmatter {
   category: "hochzeit" | "portrait" | "familie";
   heroImage: string;
   heroBg?: string;
-  gallery: string[];
+  gallery?: string[];
   excerpt: string;
   description?: string;
   client?: string;
