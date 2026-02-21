@@ -547,7 +547,7 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 
 # Contact form recipient
-CONTACT_EMAIL=thorsten@lightstories.de
+CONTACT_EMAIL=thorsten@lightstories-photography.at
 
 # Optional: Analytics
 NEXT_PUBLIC_VERCEL_ANALYTICS=1

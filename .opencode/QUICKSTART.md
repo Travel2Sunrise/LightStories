@@ -121,7 +121,7 @@ Edit `src/app/globals.css`:
 
 Create `.env.local` for development:
 ```env
-CONTACT_EMAIL=hello@lightstories.de
+CONTACT_EMAIL=hello@lightstories-photography.at
 RESEND_API_KEY=re_your_api_key  # Optional, logs to console without it
 ```
 

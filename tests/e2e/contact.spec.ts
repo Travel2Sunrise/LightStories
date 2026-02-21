@@ -47,6 +47,6 @@ test.describe("Contact Page", () => {
     await page.goto("/kontakt");
     
     // Check for contact info section
-    await expect(page.locator('text="hello@lightstories.de"')).toBeVisible();
+    await expect(page.locator('text="hello@lightstories-photography.at"')).toBeVisible();
   });
 });

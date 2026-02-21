@@ -34,7 +34,7 @@ export async function generateMetadata({
   const metadata = messages.metadata as { title: string; description: string };
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lightstories.de"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lightstories-photography.at"),
     title: {
       default: metadata.title,
       template: `%s | Lightstories`,

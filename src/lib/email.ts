@@ -80,13 +80,13 @@ ${message}
 </html>
 `.trim();
 
-  const recipientEmail = process.env.CONTACT_EMAIL || "hello@lightstories.de";
+  const recipientEmail = process.env.CONTACT_EMAIL || "hello@lightstories-photography.at";
 
   // Use Resend if API key is configured
   const resend = getResend();
   if (resend) {
     const result = await resend.emails.send({
-      from: "Lightstories Website <noreply@lightstories.de>",
+      from: "Lightstories Website <noreply@lightstories-photography.at>",
       to: recipientEmail,
       replyTo: email,
       subject: `Neue Anfrage: ${categoryLabels[category] || category} - ${name}`,
