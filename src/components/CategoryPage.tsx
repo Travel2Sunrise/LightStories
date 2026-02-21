@@ -59,7 +59,7 @@ export function CategoryPageRenderer({
         />
       )}
 
-      <section className="py-20 lg:py-32 px-4">
+      <section className="py-14 lg:py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto text-center mb-16 text-lg text-muted-foreground leading-relaxed space-y-4">
             {frontmatter.description?.split("\n\n").map((paragraph, i) => (

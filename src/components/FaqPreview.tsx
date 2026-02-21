@@ -17,7 +17,7 @@ export function FaqPreview({
   const previewItems = items.slice(0, maxItems);
 
   return (
-    <section className="py-20 lg:py-32 px-4">
+    <section className="py-14 lg:py-24 px-4">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl lg:text-4xl font-light text-center mb-16 tracking-wide">
           {title}

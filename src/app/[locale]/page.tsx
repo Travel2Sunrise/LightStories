@@ -57,7 +57,7 @@ export default async function HomePage({
 
       {/* Categories Section */}
       {frontmatter.categories && (
-        <section className="py-20 lg:py-32 px-4">
+        <section className="py-14 lg:py-24 px-4">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-light text-center mb-16 tracking-wide">
               {frontmatter.categoriesTitle}
@@ -81,7 +81,7 @@ export default async function HomePage({
 
       {/* About Section */}
       {frontmatter.about && (
-        <section className="py-20 lg:py-32 px-4 bg-muted">
+        <section className="py-14 lg:py-24 px-4 bg-muted">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-light mb-8 tracking-wide">
               {frontmatter.about.title}
@@ -107,7 +107,7 @@ export default async function HomePage({
 
       {/* CTA Section */}
       {frontmatter.cta && (
-        <section className="py-20 lg:py-32 px-4 bg-primary dark:bg-[#1f1e1c] text-white">
+        <section className="py-14 lg:py-24 px-4 bg-primary dark:bg-[#1f1e1c] text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-light mb-8 tracking-wide">
               {frontmatter.cta.title}
