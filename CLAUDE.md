@@ -29,7 +29,7 @@ Next.js 16 App Router with `next-intl` for i18n (German default, English). All p
 
 All pages are MDX-driven. Content lives in `src/content/{locale}/` as `.mdx` files, parsed server-side by `src/lib/mdx.ts` using `gray-matter`.
 
-- **Projects**: `src/content/{locale}/projekte/*.mdx` — frontmatter: title, date, category (`hochzeit`|`portrait`|`familie`), heroImage, gallery array, excerpt, optional client/location/testimonial
+- **Projects**: `src/content/{locale}/projekte/*.mdx` — frontmatter: title, date, category (`hochzeit`|`portrait`|`familie`), heroImage, gallery array, excerpt, optional client/location/testimonial. Supports `draft: true` to hide from production (listings, static generation, direct URL access). Drafts are visible in dev mode with an amber "DRAFT" badge.
 - **Category pages**: `src/content/{locale}/{hochzeit,portrait,familie}.mdx` — frontmatter-driven: hero config, gallery config (source: "category" auto-discovers images from `public/images/{category}/`), CTA links. Rendered by shared `CategoryPageRenderer` component
 - **Contact page**: `src/content/{locale}/kontakt.mdx` — frontmatter: title, subtitle, contactInfo (email, phone, social links), showContactForm flag. `ContactForm` component still uses `next-intl` translations for form labels
 - **Legal pages**: `src/content/{locale}/{impressum,datenschutz}.mdx` — frontmatter: title, metaDescription, layout: "prose". Body content is full markdown rendered via `next-mdx-remote`

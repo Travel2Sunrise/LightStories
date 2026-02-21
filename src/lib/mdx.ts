@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { __contentVersion } from "./content-trigger";
 
 const contentDirectory = path.join(process.cwd(), "src/content");
+const isDev = process.env.NODE_ENV === "development";
 
 // Prevent tree-shaking so Turbopack tracks the dependency
 void __contentVersion;
@@ -20,6 +21,7 @@ export interface ProjectFrontmatter {
   client?: string;
   location?: string;
   testimonial?: string;
+  draft?: boolean;
 }
 
 export interface Project {
@@ -149,8 +151,13 @@ export function getProjects(locale: string): Project[] {
     };
   });
 
+  // Filter out drafts in production
+  const visible = isDev
+    ? projects
+    : projects.filter((p) => !p.frontmatter.draft);
+
   // Sort by date, newest first
-  return projects.sort(
+  return visible.sort(
     (a, b) =>
       new Date(b.frontmatter.date).getTime() -
       new Date(a.frontmatter.date).getTime()
@@ -180,10 +187,15 @@ export function getProject(locale: string, slug: string): Project | null {
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
+  const frontmatter = data as ProjectFrontmatter;
+
+  if (!isDev && frontmatter.draft) {
+    return null;
+  }
 
   return {
     slug,
-    frontmatter: data as ProjectFrontmatter,
+    frontmatter,
     content,
   };
 }
@@ -192,16 +204,7 @@ export function getProject(locale: string, slug: string): Project | null {
  * Get all project slugs for static generation
  */
 export function getProjectSlugs(locale: string): string[] {
-  const projectsDirectory = path.join(contentDirectory, locale, "projekte");
-
-  if (!fs.existsSync(projectsDirectory)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(projectsDirectory);
-  return files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""));
+  return getProjects(locale).map((p) => p.slug);
 }
 
 /**

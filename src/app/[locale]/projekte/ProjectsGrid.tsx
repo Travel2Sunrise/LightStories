@@ -83,9 +83,16 @@ export function ProjectsGrid({ projects, blurDataMap }: ProjectsGridProps) {
                 />
               </div>
               <div>
-                <p className="text-xs text-primary uppercase tracking-wider mb-1">
-                  {tCategories(project.frontmatter.category)}
-                </p>
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-xs text-primary uppercase tracking-wider">
+                    {tCategories(project.frontmatter.category)}
+                  </p>
+                  {project.frontmatter.draft && (
+                    <span className="px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-amber-500 text-white rounded">
+                      Draft
+                    </span>
+                  )}
+                </div>
                 <h3 className="text-lg font-light tracking-wide text-foreground group-hover:text-primary transition-colors duration-300">
                   {project.frontmatter.title}
                 </h3>

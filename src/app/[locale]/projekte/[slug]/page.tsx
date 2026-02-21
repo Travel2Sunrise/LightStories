@@ -105,9 +105,16 @@ function ProjectPageInner({
         <PlaceholderBadge src={heroBackground} className="left-0 top-20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
           <div className="max-w-7xl mx-auto">
-            <p className="text-white/80 text-sm uppercase tracking-wider mb-2">
-              {tCategories(frontmatter.category)}
-            </p>
+            <div className="flex items-center gap-3 mb-2">
+              <p className="text-white/80 text-sm uppercase tracking-wider">
+                {tCategories(frontmatter.category)}
+              </p>
+              {frontmatter.draft && (
+                <span className="px-2 py-0.5 text-xs font-medium uppercase tracking-wider bg-amber-500 text-white rounded">
+                  Draft
+                </span>
+              )}
+            </div>
             <h1 className="text-4xl lg:text-6xl font-light text-white tracking-wide">
               {frontmatter.title}
             </h1>
