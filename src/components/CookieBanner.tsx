@@ -1,26 +1,28 @@
 "use client";
 
-import { useReducer, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 
 const STORAGE_KEY = "cookie-banner-dismissed";
 
-function isDismissed() {
-  if (typeof window === "undefined") return true;
-  return localStorage.getItem(STORAGE_KEY) === "1";
-}
-
 export function CookieBanner() {
   const t = useTranslations("cookies");
-  const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
+  const [visible, setVisible] = useState(false);
 
-  const dismiss = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "1");
-    forceUpdate();
+  useEffect(() => {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setVisible(true);
+    }
   }, []);
 
-  if (isDismissed()) return null;
+  const dismiss = () => {
+    localStorage.setItem(STORAGE_KEY, "1");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
