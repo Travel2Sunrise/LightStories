@@ -4,9 +4,6 @@ test-results/
 playwright-report/
 playwright.config.ts
 
-# Development scripts
-scripts/
-
 # Documentation
 README.md
 CLAUDE.md
