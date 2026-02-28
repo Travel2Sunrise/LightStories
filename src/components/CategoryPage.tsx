@@ -56,6 +56,7 @@ export function CategoryPageRenderer({
           blurDataURL={frontmatter.hero.image ? getBlurDataURL(frontmatter.hero.image) : undefined}
           showCta={frontmatter.hero.showCta ?? false}
           height={frontmatter.hero.height ?? "large"}
+          titleClassName="font-handwritten"
         />
       )}
 

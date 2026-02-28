@@ -2,7 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Mea_Culpa } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { Navigation } from "@/components/Navigation";
@@ -17,6 +17,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const meaCulpa = Mea_Culpa({
+  weight: "400",
+  variable: "--font-mea-culpa",
   subsets: ["latin"],
 });
 
@@ -69,7 +75,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} data-scroll-behavior="smooth" className="relative" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} ${meaCulpa.variable} antialiased min-h-screen flex flex-col`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages}>

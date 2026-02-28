@@ -18,6 +18,7 @@ interface HeroProps {
   ctaHref?: string;
   overlay?: boolean;
   height?: "full" | "large" | "medium";
+  titleClassName?: string;
 }
 
 export function Hero({
@@ -31,6 +32,7 @@ export function Hero({
   ctaHref = "/projekte",
   overlay = true,
   height = "full",
+  titleClassName,
 }: HeroProps) {
   const t = useTranslations("hero");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -97,7 +99,7 @@ export function Hero({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide mb-6"
+          className={`${titleClassName ? "text-5xl md:text-7xl lg:text-8xl" : "text-4xl md:text-6xl lg:text-7xl"} font-light tracking-wide mb-6 ${titleClassName ?? ""}`}
         >
           {title || t("title")}
         </motion.h1>

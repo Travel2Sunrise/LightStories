@@ -53,6 +53,7 @@ export default async function HomePage({
         ctaText={frontmatter.hero?.ctaText}
         ctaHref={frontmatter.hero?.ctaHref}
         height={frontmatter.hero?.height ?? "full"}
+        titleClassName="font-handwritten"
       />
 
       {/* Categories Section */}
