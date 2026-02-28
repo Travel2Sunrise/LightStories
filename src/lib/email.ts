@@ -1,12 +1,4 @@
-import { Resend } from "resend";
-
-// Only instantiate Resend when API key is available
-const getResend = () => {
-  if (process.env.RESEND_API_KEY) {
-    return new Resend(process.env.RESEND_API_KEY);
-  }
-  return null;
-};
+import nodemailer from "nodemailer";
 
 interface ContactEmailData {
   name: string;
@@ -22,6 +14,24 @@ const categoryLabels: Record<string, string> = {
   portrait: "Portraitfotografie",
   familie: "Familienfotografie",
 };
+
+function createTransporter() {
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT || "587");
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!host || !user || !pass) {
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+  });
+}
 
 export async function sendContactEmail(data: ContactEmailData) {
   const { name, email, phone, category, date, message } = data;
@@ -80,13 +90,14 @@ ${message}
 </html>
 `.trim();
 
-  const recipientEmail = process.env.CONTACT_EMAIL || "office@lightstories-photography.at";
+  const recipientEmail =
+    process.env.CONTACT_EMAIL || "office@lightstories-photography.at";
+  const senderEmail = process.env.SMTP_USER || "office@lightstories-photography.at";
 
-  // Use Resend if API key is configured
-  const resend = getResend();
-  if (resend) {
-    const result = await resend.emails.send({
-      from: "Lightstories Website <noreply@lightstories-photography.at>",
+  const transporter = createTransporter();
+  if (transporter) {
+    const info = await transporter.sendMail({
+      from: `Lightstories Website <${senderEmail}>`,
       to: recipientEmail,
       replyTo: email,
       subject: `Neue Anfrage: ${categoryLabels[category] || category} - ${name}`,
@@ -94,7 +105,7 @@ ${message}
       html: htmlContent,
     });
 
-    return result;
+    return { data: { id: info.messageId }, error: null };
   }
 
   // Fallback: Log to console for development
