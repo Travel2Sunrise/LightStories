@@ -80,7 +80,7 @@ ${message}
 </html>
 `.trim();
 
-  const recipientEmail = process.env.CONTACT_EMAIL || "hello@lightstories-photography.at";
+  const recipientEmail = process.env.CONTACT_EMAIL || "office@lightstories-photography.at";
 
   // Use Resend if API key is configured
   const resend = getResend();
