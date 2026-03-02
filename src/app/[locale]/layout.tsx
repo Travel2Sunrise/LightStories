@@ -8,7 +8,6 @@ import "../globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
-import { Analytics } from "@vercel/analytics/next";
 import { getPage } from "@/lib/mdx";
 
 const geistSans = Geist({
@@ -86,7 +85,6 @@ export default async function LocaleLayout({
             <CookieBanner />
           </NextIntlClientProvider>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );

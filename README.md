@@ -18,7 +18,7 @@ The site enables clients to view portfolios, browse projects, and submit booking
 - **Styling**: Tailwind CSS 4 with typography plugin
 - **Animations**: Framer Motion
 - **Content**: MDX files with gray-matter for frontmatter
-- **Email**: Nodemailer via SMTP (World4You) for contact form submissions
+- **Email**: Resend API for contact form submissions
 - **Forms**: React Hook Form
 - **Testing**: Playwright for E2E tests
 - **TypeScript**: Full type safety
@@ -100,7 +100,7 @@ src/
 
 ### Contact Form
 - React Hook Form with validation
-- Server-side email sending via nodemailer over SMTP
+- Server-side email sending via Resend API
 - Required fields: name, email, message, privacy consent
 - Optional fields: phone, category, preferred date
 
@@ -236,20 +236,14 @@ npm test
 Create a `.env.local` file for local development:
 
 ```
-SMTP_HOST=smtp.example.com
-SMTP_PORT=465
-SMTP_USER=your@email.com
-SMTP_PASS=your_smtp_password
+RESEND_API_KEY=your_resend_api_key
 CONTACT_EMAIL=your@email.com
 NEXT_PUBLIC_SHOW_PLACEHOLDERS=true
 ```
 
 | Variable | Required | Description |
 |---|---|---|
-| `SMTP_HOST` | Yes | SMTP server hostname |
-| `SMTP_PORT` | Yes | SMTP port (465 for SSL, 587 for STARTTLS) |
-| `SMTP_USER` | Yes | SMTP username (typically the sender email address) |
-| `SMTP_PASS` | Yes | SMTP password |
+| `RESEND_API_KEY` | Yes | API key for sending contact form emails via Resend |
 | `CONTACT_EMAIL` | Yes | Recipient email address for contact form submissions |
 | `NEXT_PUBLIC_SHOW_PLACEHOLDERS` | No | Set to `true` to show a badge on images that are placeholders (useful during development). Defaults to off. |
 
