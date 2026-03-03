@@ -14,7 +14,7 @@ interface ProjectsGridProps {
   blurDataMap?: Record<string, string>;
 }
 
-const categories = ["all", "hochzeit", "portrait", "familie"] as const;
+const categories = ["all", "hochzeit", "portrait", "familie", "babybauch"] as const;
 
 export function ProjectsGrid({ projects, blurDataMap }: ProjectsGridProps) {
   const searchParams = useSearchParams();
@@ -30,7 +30,7 @@ export function ProjectsGrid({ projects, blurDataMap }: ProjectsGridProps) {
 
   const getCategoryLabel = (cat: string) => {
     if (cat === "all") return t("allCategories");
-    return tCategories(cat as "hochzeit" | "portrait" | "familie");
+    return tCategories(cat as "hochzeit" | "portrait" | "familie" | "babybauch");
   };
 
   if (projects.length === 0) {

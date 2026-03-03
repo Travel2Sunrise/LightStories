@@ -12,7 +12,7 @@ void __contentVersion;
 export interface ProjectFrontmatter {
   title: string;
   date: string;
-  category: "hochzeit" | "portrait" | "familie";
+  category: "hochzeit" | "portrait" | "familie" | "babybauch";
   heroImage: string;
   heroBg?: string;
   gallery?: string[];

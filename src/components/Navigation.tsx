@@ -17,6 +17,7 @@ export function Navigation() {
     { href: "/hochzeit", label: t("wedding") },
     { href: "/portrait", label: t("portrait") },
     { href: "/familie", label: t("family") },
+    { href: "/babybauch", label: t("babybauch") },
     { href: "/projekte", label: t("projects") },
     { href: "/kontakt", label: t("contact") },
   ];

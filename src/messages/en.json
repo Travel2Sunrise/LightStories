@@ -8,6 +8,7 @@
     "wedding": "Wedding",
     "portrait": "Portrait",
     "family": "Family",
+    "babybauch": "Maternity",
     "projects": "Projects",
     "faq": "FAQ",
     "contact": "Contact",
@@ -102,7 +103,8 @@
   "categories": {
     "hochzeit": "Wedding",
     "portrait": "Portrait",
-    "familie": "Family"
+    "familie": "Family",
+    "babybauch": "Maternity"
   },
   "cookies": {
     "message": "This website uses only technically necessary cookies.",
