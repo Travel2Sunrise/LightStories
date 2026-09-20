@@ -1,8 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import type { SocialLink } from "@/lib/mdx";
+import { BuiltBy } from "./BuiltBy";
 
 interface FooterProps {
   socialLinks?: SocialLink[];
@@ -11,6 +12,7 @@ interface FooterProps {
 export function Footer({ socialLinks }: FooterProps) {
   const t = useTranslations("footer");
   const tNav = useTranslations("nav");
+  const locale = useLocale();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -123,6 +125,7 @@ export function Footer({ socialLinks }: FooterProps) {
           <p className="text-sm text-white/40">
             &copy; {currentYear} Lightstories. {t("copyright")}
           </p>
+          <BuiltBy locale={locale} from="lightstories" className="mt-3" />
         </div>
       </div>
     </footer>
